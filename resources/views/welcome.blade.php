@@ -11,7 +11,7 @@
                     <span class="c-gray-1">{{ $post->published_at->format('M d')}}</span>
                 </div>
                 <div class="post-category">
-                    <span class="category text-capitalize">i do travel</span>
+                    <span class="category text-capitalize">{{ $post->category->name }}</span>
                 </div>
             </header>
             <h1>{{ $post->title }}</h1>
@@ -30,7 +30,7 @@
         </div>
     </article>
     @endforeach
-{{-- 
+{{--
         <article class="post w-image">
             <figure><img src="img/img-post-1.png" alt="" class="img-responsive"></figure>
             <div class="content-post">
@@ -233,4 +233,4 @@
 
 </section><!-- fin del div.posts.container -->
 @endsection
-	
+

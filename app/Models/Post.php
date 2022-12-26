@@ -10,4 +10,8 @@ class Post extends Model
     use HasFactory;
 
     protected $dates = ['published_at'];
+
+    public function Category(){
+        return $this->belongsTo(Category::class);
+    }
 }
