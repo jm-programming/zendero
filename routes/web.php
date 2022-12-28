@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +19,5 @@ Route::get('/', function () {
     return view('welcome', compact('posts'));
 });
 
-//Route::get('home', 'HomeController@index');
-
-
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
