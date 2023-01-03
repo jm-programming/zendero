@@ -21,4 +21,11 @@ Route::get('/', [App\Http\Controllers\PagesController::class, "home"]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('admin/posts', [App\Http\Controllers\admin\PostsController::class, "index"]);
+Route::get('admin/posts', [App\Http\Controllers\admin\PostsController::class, "index"])->middleware("auth")->name("admin.posts.index");
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/users', function () {
+        // Matches The "/admin/users" URL
+    });
+});
