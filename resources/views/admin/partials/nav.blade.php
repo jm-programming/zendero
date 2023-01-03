@@ -4,14 +4,14 @@
 
     <li class="nav-header">NAVEGACION</li>
     <li class="nav-item">
-      <a href="/home" class="nav-link">
+      <a href="{{ route('admin') }}" class="nav-link {{ request()->is('admin') ? 'active' : ''}}" >
         <i class="nav-icon fas fa-home"></i>
         <p>
             Inicio
         </p>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ request()->is('admin/posts') ? 'menu-is-opening menu-open' : '' }}">
       <a href="#" class="nav-link">
         <i class="nav-icon far fa-envelope"></i>
         <p>
@@ -22,6 +22,7 @@
       <ul class="nav nav-treeview">
         <li class="nav-item">
           <a href="{{ route('admin.posts.index') }}" class="nav-link">
+          <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->is('admin/posts') ? 'active' : ''}}">
             <i class="far fa-eye nav-icon"></i>
             <p>Ver todos los posts</p>
           </a>

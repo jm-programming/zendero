@@ -2,6 +2,8 @@
 
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 
 /*
@@ -15,17 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    $posts = App\Models\Post::all();
+    return view('welcome', compact('posts'));
+});
+
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\PagesController::class, "home"]);
+Route::get('/', [App\Http\Controllers\PagesController::class, 'home']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->namespace('admin')->middleware('auth')->group(function () {
 
-Route::get('admin/posts', [App\Http\Controllers\admin\PostsController::class, "index"])->middleware("auth")->name("admin.posts.index");
+    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
 
-
-Route::prefix('admin')->group(function () {
-    Route::get('/users', function () {
-        // Matches The "/admin/users" URL
-    });
+    Route::get('/posts', [App\Http\Controllers\admin\PostsController::class, 'index'])->name('admin.posts.index');
 });
+
+Route::get('admin/posts', [App\Http\Controllers\admin\PostsController::class, "index"]);
