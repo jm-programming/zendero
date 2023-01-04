@@ -27,9 +27,10 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\PagesController::class, 'home']);
 
 Route::prefix('admin')->namespace('admin')->middleware('auth')->group(function () {
-    
+
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
 
-    Route::get('/posts', [App\Http\Controllers\admin\PostsController::class, 'index'])->name('admin.posts.index');    
+    Route::get('/posts', [App\Http\Controllers\admin\PostsController::class, 'index'])->name('admin.posts.index');
 });
 
+Route::get('admin/posts', [App\Http\Controllers\admin\PostsController::class, "index"]);

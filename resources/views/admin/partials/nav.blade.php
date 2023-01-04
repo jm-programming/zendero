@@ -21,6 +21,7 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
+          <a href="{{ route('admin.posts.index') }}" class="nav-link">
           <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->is('admin/posts') ? 'active' : ''}}">
             <i class="far fa-eye nav-icon"></i>
             <p>Ver todos los posts</p>
